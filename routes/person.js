@@ -46,9 +46,9 @@ router.get("/all/:_id", (req, res) => {
 });
 
 //Model Update by _id     :  http://localhost:4000/persons/editFood/:_id
-router.put("/editFood/:_id", (req, res) => {
+router.patch("/editFood/:_id", (req, res) => {
   const { _id } = req.params;
-  Person.findOneAndUpdate({ _id }, { $set: req.body }, { new: true })
+  Person.updateOne({ _id }, { $set: req.body }, { new: true })
     .then((persons) => res.send(persons))
     .catch((err) => console.log(err));
 });
